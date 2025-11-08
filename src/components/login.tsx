@@ -58,7 +58,7 @@ export function Login({ onLogin }: LoginProps) {
               <Checkbox
                 id="remember"
                 checked={rememberMe}
-                onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                onCheckedChange={(checked: boolean) => setRememberMe(checked as boolean)}
               />
               <Label htmlFor="remember" className="text-sm cursor-pointer">
                 Remember Me

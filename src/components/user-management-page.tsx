@@ -13,15 +13,15 @@ interface User {
   id: string;
   name: string;
   email: string;
-  role: 'Admin' | 'Staff';
+  role: 'Admin' | 'Farmer';
   status: 'Active' | 'Disabled';
 }
 
 const initialUsers: User[] = [
   { id: 'U001', name: 'Sophea Chan', email: 'sophea@agriconnect.com', role: 'Admin', status: 'Active' },
-  { id: 'U002', name: 'Dara Kim', email: 'dara@agriconnect.com', role: 'Staff', status: 'Active' },
-  { id: 'U003', name: 'Pisey Rath', email: 'pisey@agriconnect.com', role: 'Staff', status: 'Active' },
-  { id: 'U004', name: 'Vibol Chea', email: 'vibol@agriconnect.com', role: 'Staff', status: 'Disabled' },
+  { id: 'U002', name: 'Dara Kim', email: 'dara@agriconnect.com', role: 'Farmer', status: 'Active' },
+  { id: 'U003', name: 'Pisey Rath', email: 'pisey@agriconnect.com', role: 'Farmer', status: 'Active' },
+  { id: 'U004', name: 'Vibol Chea', email: 'vibol@agriconnect.com', role: 'Farmer', status: 'Disabled' },
 ];
 
 export function UserManagementPage() {
@@ -33,7 +33,7 @@ export function UserManagementPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    role: 'Staff' as 'Admin' | 'Staff',
+    role: 'Farmer' as 'Admin' | 'Farmer',
   });
 
   const filteredUsers = users.filter(
@@ -52,7 +52,7 @@ export function UserManagementPage() {
     };
     setUsers([...users, newUser]);
     setIsAddDialogOpen(false);
-    setFormData({ name: '', email: '', role: 'Staff' });
+    setFormData({ name: '', email: '', role: 'Farmer' });
   };
 
   const handleEditUser = () => {
@@ -66,7 +66,7 @@ export function UserManagementPage() {
       );
       setIsEditDialogOpen(false);
       setEditingUser(null);
-      setFormData({ name: '', email: '', role: 'Staff' });
+      setFormData({ name: '', email: '', role: 'Farmer' });
     }
   };
 
@@ -217,13 +217,13 @@ export function UserManagementPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="user-role">Role</Label>
-              <Select value={formData.role} onValueChange={(value) => setFormData({ ...formData, role: value as 'Admin' | 'Staff' })}>
+              <Select value={formData.role} onValueChange={(value: string) => setFormData({ ...formData, role: value as 'Admin' | 'Farmer' })}>
                 <SelectTrigger id="user-role" className="rounded-lg">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="Admin">Admin</SelectItem>
-                  <SelectItem value="Staff">Staff</SelectItem>
+                  <SelectItem value="Farmer">Farmer</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -269,13 +269,13 @@ export function UserManagementPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="edit-user-role">Role</Label>
-              <Select value={formData.role} onValueChange={(value) => setFormData({ ...formData, role: value as 'Admin' | 'Staff' })}>
+              <Select value={formData.role} onValueChange={(value: string) => setFormData({ ...formData, role: value as 'Admin' | 'Farmer' })}>
                 <SelectTrigger id="edit-user-role" className="rounded-lg">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="Admin">Admin</SelectItem>
-                  <SelectItem value="Staff">Staff</SelectItem>
+                  <SelectItem value="Farmer">Farmer</SelectItem>
                 </SelectContent>
               </Select>
             </div>
